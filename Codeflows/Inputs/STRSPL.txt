@@ -1,0 +1,70 @@
+Say that a string is binary if it consists solely of the symbols 0 and 1 (the empty string is binary too). For a binary string s let's define two functions:
+
+The function rev(s) reverses the string s. For example, rev(010111)=111010 and rev(01)=10.
+The string flip(s) changes each character in s from 0 to 1 or from 1 to 0. For example, flip(010111)=101000 and flip(11)=00.
+If s=rev(s) then we say that s is a palindrome. If s=rev(flip(s)) then we say that s is an antipalindrome.
+
+Given a binary string s=s1s2…s|s|, divide it into a palindrome and an antipalindrome. Formally, you should find two sequences i1,i2,…,ik and j1,j2,…,jm, such that:
+
+k,m≥0
+|s|=k+m
+All indices i1,i2,…,ik,j1,j2,…,jm are distinct integers satisfying 1≤ix,jx≤|s|.
+i1<i2<…<ik and j1<j2<…<jm
+The string si1si2…sik is a palindrome.
+The string sj1sj2…sjm is an antipalindrome.
+Input:
+The first line contains a single integer, t - the number of test cases. The next t lines describe test cases.
+
+The only line for each test case contains a binary string s.
+
+Output:
+In the first line for each test case, print two integers k and m.
+
+In the second line for each test case, print k integers i1,i2,…,ik.
+
+In the third line for each test case, print m integers j1,j2,…,jm.
+
+All required conditions should be satisfied.
+
+It can be shown that an answer always exists. If there exist multiple answers you can print any.
+
+Constraints
+1≤t≤105
+1≤|s|≤100000
+the sum of lengths of all strings does not exceed 300000
+Subtasks
+Subtask #1 (30 points):
+
+t≤1000
+|s|≤10
+Subtask #2 (70 points): original constraints
+
+Sample Input:
+4
+0
+10111001011
+1100100001
+11000111
+Sample Output:
+1 0
+1
+
+5 6
+1 4 6 8 11
+2 3 5 7 9 10
+6 4
+1 3 4 7 8 10
+2 5 6 9
+6 2
+1 2 4 5 7 8
+3 6
+Explanation:
+In the first test case, the string 0 is a palindrome and the empty string is an antipalindrome.
+
+In the second test case, we can use indices [1,4,6,8,11] to create the palindrome s1s4s6s8s11=11011 and indices [2,3,5,7,9,10] to create the antipalindrome s2s3s5s7s9s10=011001.
+
+Author:	7★isaf27
+Date Added:	6-08-2020
+Time Limit:	1 secs
+Source Limit:	50000 Bytes
+Languages:	CPP14, C, JAVA, PYTH 3.6, PYTH, CS2, ADA, PYPY, PYP3, TEXT, CPP17, PAS fpc, RUBY, PHP, NODEJS, GO, TCL, HASK, PERL, SCALA, kotlin, BASH, JS, PAS gpc, BF, LISP sbcl, CLOJ, LUA, D, R, CAML, rust, ASM, FORT, FS, LISP clisp, SQL, swift, SCM guile, PERL6, CLPS, WSPC, ERL, ICK, NICE, PRLG, ICON, PIKE, COB, SCM chicken, SCM qobi, ST, NEM, SQLQ

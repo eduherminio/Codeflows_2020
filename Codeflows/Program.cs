@@ -9,8 +9,11 @@ namespace Codeflows
             //var one = new Cakezoned();
             //one.Run();
 
-            var two = new Div3();
-            two.Run();
+            //var two = new Div3();
+            //two.Run();
+
+            var four = new PalindromeAntipalindrome();
+            four.Run();
         }
     }
 }

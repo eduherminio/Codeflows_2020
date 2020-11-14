@@ -1,4 +1,6 @@
-﻿Chefina loves cakes! N suitors numbered 1…N have arrived from across the seven seas to woo her.
+﻿https://www.codechef.com/BENDSP01/problems/BENDSP2
+
+Chefina loves cakes! N suitors numbered 1…N have arrived from across the seven seas to woo her.
 
 Each of the suitors wishes to impress Chefina, so suitor i has prepared a cake of height Hi. To test the suitors, Chefina assigned them Q tasks. Each of the tasks is of one of the following types:
 
