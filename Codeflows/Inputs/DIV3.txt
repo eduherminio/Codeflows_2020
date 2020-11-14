@@ -1,0 +1,47 @@
+﻿Let's consider some multiset A consisting of 0s, 1s, and 2s. Define S(A) to be the sum of the elements in A.
+
+It is guaranteed that S(A) is divisible by 3. You need to partition A into some number of nonempty multisets A1,A2,…,Ak such that:
+
+A1∪A2∪…∪Ak=A
+for all 1≤i≤k, S(Ai) is divisible by 3
+You are given s0, s1, and s2, where si is equal to the number of occurrences of i in A. Find the maximum possible value of k.
+
+Input:
+The first line contains one integer number t - the number of test cases. The next t lines describe test cases.
+
+The only line of each test case contains three integers s0, s1, and s2 - the number of 0s, 1s, and 2s in A, respectively.
+
+Output:
+For each test case print the maximum number of nonempty multisets with sum divisible by 3 into which the multiset A can be partitioned.
+
+Constraints
+1≤t≤105
+0≤s0,s1,s2≤109
+Subtasks
+Subtask #1 (30 points):
+
+t≤1000
+s0,s1,s2<10
+Subtask #2 (70 points): original constraints
+
+Sample Input:
+4
+239 0 0
+2 4 1
+0 0 3
+7 3 3
+Sample Output:
+239
+4
+1
+10
+Explanation:
+In the first test case, we can divide our set into 239 sets with one zero in each set because all numbers are divisible by 3. It is obvious that the number of sets can't be bigger.
+
+In the second test case we can divide our set A={0,0,1,1,1,1,2} into four sets {0},{0},{1,1,1},{1,2}. It can be proven that 4 is the maximum possible answer.
+
+Author:	7★isaf27
+Date Added:	6-08-2020
+Time Limit:	1 secs
+Source Limit:	50000 Bytes
+Languages:	CPP14, C, JAVA, PYTH 3.6, PYTH, CS2, ADA, PYPY, PYP3, TEXT, CPP17, PAS fpc, RUBY, PHP, NODEJS, GO, TCL, HASK, PERL, SCALA, kotlin, BASH, JS, PAS gpc, BF, LISP sbcl, CLOJ, LUA, D, R, CAML, rust, ASM, FORT, FS, LISP clisp, SQL, swift, SCM guile, PERL6, CLPS, WSPC, ERL, ICK, NICE, PRLG, ICON, PIKE, COB, SCM chicken, SCM qobi, ST, NEM, SQLQ

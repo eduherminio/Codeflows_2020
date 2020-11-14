@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FileParser;
 
 namespace Codeflows
 {
@@ -119,7 +118,7 @@ namespace Codeflows
 
             if (heights.Length != numberOfCakes)
             {
-                throw new ParsingException();
+                throw new Exception();
             }
             _cakes.AddRange(heights.Select(x => new Cake(ulong.Parse(x))));
 

@@ -6,8 +6,11 @@ namespace Codeflows
     {
         public static void Main()
         {
-            var one = new Cakezoned();
-            one.Run();
+            //var one = new Cakezoned();
+            //one.Run();
+
+            var two = new Div3();
+            two.Run();
         }
     }
 }
