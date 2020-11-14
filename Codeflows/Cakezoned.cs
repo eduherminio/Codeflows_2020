@@ -9,9 +9,9 @@ namespace Codeflows
 
     public class Cake
     {
-        public double Height { get; set; }
+        public ulong Height { get; set; }
 
-        public Cake(double height)
+        public Cake(ulong height)
         {
             Height = height;
         }
@@ -23,14 +23,14 @@ namespace Codeflows
 
         public int L { get; set; }
         public int R { get; set; }
-        public int X { get; set; }
+        public ulong X { get; set; }
 
         public Task(int taskType)
         {
             Type = (TaskType)taskType;
         }
 
-        public Task(int taskType, int l, int r, int x) : this(taskType)
+        public Task(int taskType, int l, int r, ulong x) : this(taskType)
         {
             L = l;
             R = r;
@@ -48,10 +48,19 @@ namespace Codeflows
             ParseInput();
 
             var oddCakes = _cakes.Where((_, index) => index % 2 == 0).ToList();     // Our lists are 0-indexed
-            var evenCakes = _cakes.Except(oddCakes);
+            var evenCakes = _cakes.Except(oddCakes).ToList();
 
-            var oddTotal = oddCakes.Sum(c => c.Height);
-            var evenTotal = evenCakes.Sum(c => c.Height);
+            ulong oddTotal = 0;
+            for (int i = 0; i < oddCakes.Count; ++i)
+            {
+                oddTotal += oddCakes[i].Height;
+            }
+
+            ulong evenTotal = 0;
+            for (int i = 0; i < evenCakes.Count; ++i)
+            {
+                evenTotal += evenCakes[i].Height;
+            }
 
             foreach (var task in _tasks)
             {
@@ -59,9 +68,15 @@ namespace Codeflows
                 {
                     case TaskType.One:
                         {
-                            for (int i = task.L; i <= task.R; ++i)
+                            var total = task.R - task.L + 1;
+                            var halfTotalPerHeight = task.X * (ulong)(total / 2);
+
+                            evenTotal += halfTotalPerHeight;
+                            oddTotal += halfTotalPerHeight;
+
+                            if (total % 2 != 0)
                             {
-                                if (i % 2 == 0)
+                                if (task.L % 2 == 0)
                                 {
                                     evenTotal += task.X;
                                 }
@@ -106,7 +121,7 @@ namespace Codeflows
             {
                 throw new ParsingException();
             }
-            _cakes.AddRange(heights.Select(x => new Cake(double.Parse(x))));
+            _cakes.AddRange(heights.Select(x => new Cake(ulong.Parse(x))));
 
             var numberOfTasks = int.Parse(Console.ReadLine());
             for (int i = 1; i <= numberOfTasks; ++i)
@@ -114,7 +129,7 @@ namespace Codeflows
                 var inputs = Console.ReadLine().Split(' ');
                 var type = int.Parse(inputs[0]);
                 _tasks.Add(type == 1
-                    ? new Task(type, int.Parse(inputs[1]), int.Parse(inputs[2]), int.Parse(inputs[3]))
+                    ? new Task(type, int.Parse(inputs[1]), int.Parse(inputs[2]), ulong.Parse(inputs[3]))
                     : new Task(type));
             }
         }

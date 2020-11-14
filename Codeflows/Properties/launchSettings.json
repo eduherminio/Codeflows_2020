@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Codeflows": {
+      "commandName": "Project",
+      "commandLineArgs": "< input"
+    }
+  }
+}
