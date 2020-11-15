@@ -13,6 +13,8 @@ namespace Codeflows
             new DivPuz().Run();
 
             //new PalindromeAntipalindrome().Run();
+
+            //new CalculateOr().Run();
         }
     }
 }
