@@ -10,7 +10,7 @@ namespace Codeflows
 
             //new Div3().Run();
 
-            new DivPuz().Run();
+            new DivPuz_partiallyIncomplete().Run();
 
             //new PalindromeAntipalindrome().Run();
 

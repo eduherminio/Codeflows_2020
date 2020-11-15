@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Codeflows
 {
-    public class CalculateOr
+    public class CalculateOr_incomplete
     {
         private List<List<int>> _inputs;
         private IList<int> A;
@@ -41,7 +41,7 @@ namespace Codeflows
 
         private bool Foo(IList<int> arg)
         {
-            for(int i = 0; i< arg.Count; ++i)
+            for (int i = 0; i < arg.Count; ++i)
             {
                 if (arg[0] == OR(arg.Skip(i).Reverse()))
                     return true;

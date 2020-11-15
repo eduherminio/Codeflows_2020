@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Codeflows
 {
-    public class DivPuz
+    public class DivPuz_partiallyIncomplete
     {
         private List<List<ulong>> _inputs;
 
