@@ -29,63 +29,79 @@ namespace Codeflows
                         );
 
                     solution[i] = lcm;
-                    //if (lcm < 1e18)
-                    //{
-                    //    solution[i] = lcm;
-                    //}
-                    //else
-                    //{
-                    //    Thread.Sleep(5);
-                    //}
                 }
 
-                for (int i = 0; i < solution.Count; ++i)
+
+                while (false) // Subtask 1
+                              //while (true)
                 {
-                    if (solution[i] > 1e18)
+                    var nonCompliant = solution.Where(n => n.Value > 1e18).Select((n, index) => Tuple.Create(n, index)).ToList();
+                    if (nonCompliant.Count == 0)
                     {
-                        // TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                        Thread.Sleep(5);
-                        //int previous = i > 0 ? i - 1 : input.Count - 1;
-                        //int next = i < input.Count - 1 ? i + 1 : 0;
-                        //int preprevious = i > 1 ? i - 2 : input.Count - 1 - (1 - i);
-                        //int nextnext = i < input.Count - 2 ? i + 2 : 0 + (input.Count - 1 - i);
-
-                        //var gcd = GreatestCommonDivisor(solution[previous] * solution[next], input[i]);
-
-                        //var candidates = solution[i] / input[i];
-
-                        //foreach (var candidate in GetFactors(candidates).Except(new[] { (ulong)1 }))
-                        //{
-                        //    //if (possibleSolution % input[i] == 0
-                        //    //     && solution[previous] % candidate == 0 && solution[previous] / candidate % input[previous] == 0
-                        //    //     && solution[next] % candidate == 0 && solution[next] / candidate % input[next] == 0)v
-                        //    var possibleSolution = solution[i] / candidate;
-
-
-                        //    if (possibleSolution / input[i] >= 1
-                        //    && possibleSolution % input[i] == 0
-                        //     && (solution[previous] * solution[next]) / (possibleSolution) >= 1
-                        //     && (solution[previous] * solution[next]) % (possibleSolution) == 0
-                        //     && (solution[preprevious] * (possibleSolution)) / solution[previous] >= 1
-                        //     && (solution[preprevious] * (possibleSolution)) % solution[previous] == 0
-                        //     && (solution[nextnext] * (possibleSolution)) / solution[next] >= 1
-                        //     && (solution[nextnext] * (possibleSolution)) % solution[next] == 0)
-                        //    //&& (solution[previous] / candidates) % input[previous] == 0
-                        //    //&& (solution[next] / candidates) % input[next] == 0)
-                        //    {
-                        //        solution[i] = possibleSolution;
-                        //        //    solution[previous] /= gcd;
-                        //        //    solution[next] /= gcd;
-                        //    }
-                        //}
-
+                        break;
                     }
-                    //var newSol = LeastCommonMultiple(input[i], solution[previous] / input[i] / input[preprevious], solution[next] / input[i] / input[nextnext]);
+
+                    foreach (var pair in nonCompliant)
+                    {
+                        var i = pair.Item2;
+
+                        int prev = i > 0 ? i - 1 : input.Count - 1;
+                        int next = i < input.Count - 1 ? i + 1 : 0;
+
+                        foreach (var factor in PrimeNumbers)
+                        {
+                            if (solution[i] < factor || solution[i] % factor != 0) continue;
+
+                            var candidate = solution[i] / factor;
+
+                            var prod = solution[prev] * solution[next];     // Overflow that ruins the checks?
+
+                            if (candidate >= input[i] && candidate % input[i] == 0
+                                && prod >= candidate && prod % candidate == 0)
+                            {
+                                solution[i] = candidate;
+                                if (solution[i] <= 1e18) break;
+                            }
+                        }
+                    }
                 }
 
                 Console.WriteLine(string.Join(" ", solution.OrderBy(p => p.Key).Select(p => p.Value)));
             }
         }
+
+        private static List<ulong> PrimeNumbers = FirstPrimeNumbers().ToList();
+        private static IEnumerable<ulong> FirstPrimeNumbers()
+        {
+            int total = 0;
+            ulong n = 2;
+            while (total < 100)
+            {
+                if (isPrime(n))
+                {
+                    ++total;
+                    yield return n;
+                }
+                n++;
+            }
+        }
+
+        public static bool isPrime(ulong n)
+        {
+            ulong x = (ulong)Math.Floor(Math.Sqrt(n));
+
+            if (n == 1) return false;
+            if (n == 2) return true;
+
+            for (ulong i = 2; i <= x; ++i)
+            {
+                if (n % i == 0) return false;
+            }
+
+            return true;
+        }
+
+
 
         public static IEnumerable<ulong> GetFactors(ulong x)
         {
@@ -164,8 +180,8 @@ namespace Codeflows
 
         public void ParseInput()
         {
-            _inputs = new List<List<ulong>>();
             var numberOfCases = int.Parse(Console.ReadLine());
+            _inputs = new List<List<ulong>>(numberOfCases + 1);
 
             for (var _ = 0; _ < numberOfCases; ++_)
             {
