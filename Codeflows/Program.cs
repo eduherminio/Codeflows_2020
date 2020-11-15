@@ -6,14 +6,13 @@ namespace Codeflows
     {
         public static void Main()
         {
-            //var one = new Cakezoned();
-            //one.Run();
+            //new Cakezoned().Run();
 
-            //var two = new Div3();
-            //two.Run();
+            //new Div3().Run();
 
-            var four = new PalindromeAntipalindrome();
-            four.Run();
+            new DivPuz().Run();
+
+            //new PalindromeAntipalindrome().Run();
         }
     }
 }
