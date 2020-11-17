@@ -1,4 +1,4 @@
-﻿https://www.codechef.com/BENDSP01/problems/BENDSP2
+https://www.codechef.com/BENDSP01/problems/BENDSP2
 
 Chefina loves cakes! N suitors numbered 1…N have arrived from across the seven seas to woo her.
 

@@ -1,4 +1,4 @@
-﻿https://www.codechef.com/BENDSP01/problems/BENDSP5
+https://www.codechef.com/BENDSP01/problems/BENDSP5
 
 Given an array A1,A2,…,AN, calling the function calculate_or(i) (described by the C++ code below) will return the bitwise OR of Ai,Ai+1,…,AN, albeit quite inefficiently.
 

@@ -1,4 +1,4 @@
-﻿https://www.codechef.com/BENDSP01/problems/DIV3
+https://www.codechef.com/BENDSP01/problems/DIV3
 
 Let's consider some multiset A consisting of 0s, 1s, and 2s. Define S(A) to be the sum of the elements in A.
 
